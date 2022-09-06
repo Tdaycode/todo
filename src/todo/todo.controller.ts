@@ -1,34 +1,34 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { TodoService } from './todo.service';
-import { CreateTodoDto } from './dto/create-todo.dto';
-import { UpdateTodoDto } from './dto/update-todo.dto';
+import { Todo } from '@prisma/client';
+
 
 @Controller('todo')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
   @Post()
-  create(@Body() createTodoDto: CreateTodoDto) {
-    return this.todoService.create(createTodoDto);
+  async create(@Body() postData: Todo): Promise<Todo> {
+    return this.todoService.createTodo(postData);
   }
 
   @Get()
   findAll() {
-    return this.todoService.findAll();
+    return this.todoService.getAllTodo();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.todoService.findOne(+id);
+    return this.todoService.getTodo(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-    return this.todoService.update(+id, updateTodoDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
+  //   return this.todoService.update(+id, updateTodoDto);
+  // }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.todoService.remove(+id);
+    return this.todoService.deleteTodo(+id);
   }
 }
