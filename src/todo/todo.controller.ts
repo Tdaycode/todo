@@ -13,14 +13,19 @@ export class TodoController {
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.todoService.getAllTodo();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.todoService.getTodo(+id);
   }
+  @Get(':id/user')
+  async userGetTodo(@Param('id') id: string) {
+    return this.todoService.userGetTodo(+id)
+    }
+    
 
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {

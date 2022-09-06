@@ -22,7 +22,7 @@ model Todo {
   title     String   @db.VarChar(255)
   content   String?  
   startdate DateTime @default(now())
-  enddate   DateTime @updatedAt
+  enddate   DateTime @default(now())
   owner    User?    @relation(fields: [ownerId], references: [id])
   ownerId  Int?
 }

@@ -1,7 +1,11 @@
-POST http://localhost:3000/user
-Content-Type: application/json
+GET  http://localhost:3000/user/1
+
 
 {
   "name": "John Doe",
   "email": "omotayo@gmail.com"
 }
+
+GET http://localhost:3000/user/1
+
+
