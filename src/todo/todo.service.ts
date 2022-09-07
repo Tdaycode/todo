@@ -41,13 +41,13 @@ export class TodoService {
     return todo
 
   } 
-  async updateTodo(id: number): Promise<Todo> {
+  async updateTodo(id: number, data: Todo): Promise<Todo> {
     return this.prisma.todo.update({
       where: { id: Number(id) },
-      data: { completed: true },
+      data: { title: data.title, content: data.content, startdate: data.startdate,enddate: data.enddate },
     });
   }
-  
+
   async deleteTodo(id: number): Promise<Todo> {
     return this.prisma.todo.delete({
       where: { id: Number(id) },

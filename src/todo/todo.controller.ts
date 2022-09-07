@@ -28,8 +28,8 @@ export class TodoController {
     
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-    return this.todoService.update(+id, updateTodoDto);
+  update(@Param('id') id: string, @Body() updateTodoDto: Todo) {
+    return this.todoService.updateTodo(+id, updateTodoDto);
   }
 
   @Delete(':id')

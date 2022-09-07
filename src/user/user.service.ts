@@ -31,10 +31,10 @@ export class UserService {
     return user
   }
 
-  async update(id: number): Promise<User> {
+  async update(id: number, data: User): Promise<User> {
     return this.prisma.user.update({
       where: { id: Number(id) },
-      data: { completed: true },
+      data: { name: data.name, email: data.email },
      
     });
   }
