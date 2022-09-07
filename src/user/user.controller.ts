@@ -21,10 +21,10 @@ export class UserController {
     return this.userService.findOne(+id);
   }
 
-  // @Patch(':id')
-  // async update(@Param('id') id: string, @Body() userData: User): Promise<User> {
-  //   return this.userService.update(+id, userData);
-  // }
+  @Patch(':id')
+  async update(@Param('id') id: string, @Body() userData: User): Promise<User> {
+    return this.userService.update(+id, userData);
+  }
 
   @Delete(':id')
   async delete(@Param('id') id: string): Promise<User> {
